@@ -20,6 +20,9 @@ public class CorgiImageAdapter extends RecyclerView.Adapter<CorgiImageAdapter.Vi
         mCorgiImageList = corgiImageList;
     }
 
+    public CorgiImage getItem(int position){
+        return mCorgiImageList.get(position);
+    }
     //usually involves inflating a layout from XML and return the holder
     @NonNull
     @Override
@@ -37,6 +40,7 @@ public class CorgiImageAdapter extends RecyclerView.Adapter<CorgiImageAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         CorgiImage corgiImage = mCorgiImageList.get(position);
 
+        ImageView imageView = viewHolder.mImageView;
         TextView textView = viewHolder.mTextView;
         textView.setText(corgiImage.getDescription());
 
@@ -50,14 +54,15 @@ public class CorgiImageAdapter extends RecyclerView.Adapter<CorgiImageAdapter.Vi
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView mImageView;
-        public Button mButton;
+
         public TextView mTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
            mImageView = itemView.findViewById(R.id.mImageView);
-           mButton = itemView.findViewById(R.id.mButton);
            mTextView = itemView.findViewById(R.id.mTextView);
         }
     }
+
+
 }
